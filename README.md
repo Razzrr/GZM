@@ -297,8 +297,3 @@ GZM (GronnzMaster) was developed for the EverQuest boxing community.
 ## License
 
 This macro is provided as-is for personal use in EverQuest.
-
-## Support
-
-For issues and questions:
-- RedGuides Community: https://www.redguides.com/community/
