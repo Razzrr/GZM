@@ -1,0 +1,6 @@
+# Treat .mac files as text (MacroQuest macro files)
+*.mac linguist-language=Text
+*.inc linguist-language=Text
+
+# Treat INI files as INI
+*.ini linguist-language=INI
