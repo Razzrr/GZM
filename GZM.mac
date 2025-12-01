@@ -59,6 +59,7 @@
 #include_optional gzm_death.inc
 #include_optional gzm_zone.inc
 #include_optional gzm_comm.inc
+#include_optional gzm_lua.inc
 
 | Standard Includes
 #include ninjadvloot.inc
@@ -354,6 +355,12 @@
 #bind WriteSpells        /writespells
 #bind MemSpells          /memspells
 
+n| ============================================================================
+| BIND COMMANDS - Lua Hybrid Mode
+| ============================================================================
+#bind LuaStatus          /gzmlua
+#bind LuaStart           /gzmluastart
+#bind LuaStop            /gzmlualstop
 | ============================================================================
 | CONSTANTS
 | ============================================================================
@@ -515,6 +522,11 @@ Sub Main
     | Load zone-specific immunities
     /if (${Defined[LoadImmunes]}) {
         /call LoadImmunes
+    }
+    
+    | Initialize Lua hybrid mode (if available)
+    /if (${Defined[InitLuaIntegration]}) {
+        /call InitLuaIntegration
     }
 
     | -------------------------------------------------------------------------
