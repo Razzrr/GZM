@@ -216,10 +216,10 @@ This file is not overwritten on updates.
 ### Core Commands
 | Command | Description |
 |---------|-------------|
-| `/gmhelp` | Show all available commands |
-| `/gmstatus` | Show current macro status |
-| `/gmreload` | Reload INI settings |
-| `/gmdebug [type]` | Toggle debug output |
+| `/gzmhelp` | Show all available commands |
+| `/gzmstatus` | Show current macro status |
+| `/gzmreload` | Reload INI settings |
+| `/gzmdebug [type]` | Toggle debug output |
 | `/backoff` | Stop all combat |
 | `/burn` | Activate burn abilities |
 
