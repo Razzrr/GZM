@@ -60,6 +60,7 @@
 #include_optional gzm_zone.inc
 #include_optional gzm_comm.inc
 #include_optional gzm_lua.inc
+#include_optional gzm_hotkeys.inc
 
 | Standard Includes
 #include ninjadvloot.inc
@@ -361,6 +362,16 @@ n| ============================================================================
 #bind LuaStatus          /gzmlua
 #bind LuaStart           /gzmluastart
 #bind LuaStop            /gzmlualstop
+
+| ============================================================================
+| BIND COMMANDS - Hotkeys and HUD
+| ============================================================================
+#bind GZMPause           /gzmpause
+#bind GZMToggle          /gzmtoggle
+#bind GZMAdjust          /gzmadjust
+#bind GZMCamp            /gzmcamp
+#bind GZMKeys            /gzmkeys
+#bind GZMHUD             /gzmhud
 | ============================================================================
 | CONSTANTS
 | ============================================================================
@@ -527,6 +538,12 @@ Sub Main
     | Initialize Lua hybrid mode (if available)
     /if (${Defined[InitLuaIntegration]}) {
         /call InitLuaIntegration
+    }
+
+    | Initialize Hotkeys and HUD (if available)
+    /if (${Defined[InitHotkeys]}) {
+        /call InitHotkeys
+        /call LoadGZMHud
     }
 
     | -------------------------------------------------------------------------
