@@ -4,19 +4,24 @@
 |- Provides hotkey bindings for quick macro control without GUI
 |- Uses MQ2 /bind command for reliable key handling
 |-
-|- Default Key Layout:
-|-   F1  = Pause/Resume
-|-   F2  = Burn
-|-   F3  = Toggle Heals
-|-   F4  = Toggle DPS
-|-   F5  = Toggle Mez
-|-   F6  = Toggle Pull
-|-   F7  = Toggle Buffs
-|-   F8  = Toggle Pet
-|-   F9  = Make Camp Here
-|-   F10 = Back Off (stop combat)
-|-   F11 = Chase MA
-|-   F12 = Stop/Stay Here
+|- Default Key Layout (Tilde/Backtick area - won't conflict with EQ):
+|-   `     = Pause/Resume (backtick)
+|-   ~     = Burn! (Shift+backtick)
+|-   Ctrl+` = Back Off
+|-   Alt+`  = Group Pause (DanNet)
+|-
+|-   Ctrl+Q = Toggle Heals
+|-   Ctrl+W = Toggle DPS
+|-   Ctrl+E = Toggle Buffs
+|-   Ctrl+R = Toggle Mez
+|-   Ctrl+T = Toggle Slow
+|-   Ctrl+Y = Toggle Pull
+|-   Ctrl+U = Toggle Pet
+|-   Ctrl+I = Toggle Loot
+|-
+|-   Alt+Q  = Make Camp
+|-   Alt+W  = Chase MA
+|-   Alt+E  = Stay Here
 |-
 |- Usage: Hotkeys are auto-registered when macro starts
 |- Customize: Edit the key assignments in InitHotkeys
@@ -33,45 +38,45 @@ Sub InitHotkeys
 
     /echo \ag[GZM-Keys] Setting up hotkeys...
 
-    |- Core Controls
-    /squelch /bind GZM_Pause       F1 /gzmpause
-    /squelch /bind GZM_Burn        F2 /burn
-    /squelch /bind GZM_Heals       F3 /gzmtoggle HealsOn
-    /squelch /bind GZM_DPS         F4 /gzmtoggle DPSOn
+    |- Backtick/Tilde Core Controls
+    /squelch /bind GZM_Pause       ` /gzmpause
+    /squelch /bind GZM_Burn        ~ /burn
+    /squelch /bind GZM_BackOff     Ctrl+` /backoff
 
-    |- Feature Controls
-    /squelch /bind GZM_Mez         F5 /gzmtoggle MezOn
-    /squelch /bind GZM_Pull        F6 /gzmtoggle PullOn
-    /squelch /bind GZM_Buffs       F7 /gzmtoggle BuffsOn
-    /squelch /bind GZM_Pet         F8 /gzmtoggle PetOn
+    |- Ctrl+Letter Toggles (left hand friendly)
+    /squelch /bind GZM_Heals       Ctrl+Q /gzmtoggle HealsOn
+    /squelch /bind GZM_DPS         Ctrl+W /gzmtoggle DPSOn
+    /squelch /bind GZM_Buffs       Ctrl+E /gzmtoggle BuffsOn
+    /squelch /bind GZM_Mez         Ctrl+R /gzmtoggle MezOn
+    /squelch /bind GZM_Slow        Ctrl+T /gzmtoggle SlowOn
+    /squelch /bind GZM_Pull        Ctrl+Y /gzmtoggle PullOn
+    /squelch /bind GZM_Pet         Ctrl+U /gzmtoggle PetOn
+    /squelch /bind GZM_Loot        Ctrl+I /gzmtoggle LootOn
 
-    |- Movement Controls
-    /squelch /bind GZM_Camp        F9 /gzmcamp
-    /squelch /bind GZM_BackOff     F10 /backoff
-    /squelch /bind GZM_Chase       F11 /chaseme
-    /squelch /bind GZM_Stay        F12 /stayhere
+    |- Alt+Letter Movement/Actions
+    /squelch /bind GZM_Camp        Alt+Q /gzmcamp
+    /squelch /bind GZM_Chase       Alt+W /chaseme
+    /squelch /bind GZM_Stay        Alt+E /stayhere
 
-    |- Shift+Key for less common toggles
-    /squelch /bind GZM_Melee       Shift+F3 /gzmtoggle MeleeOn
-    /squelch /bind GZM_Assist      Shift+F4 /gzmtoggle AssistOn
-    /squelch /bind GZM_Slow        Shift+F5 /gzmtoggle SlowOn
-    /squelch /bind GZM_Charm       Shift+F6 /gzmtoggle CharmOn
-    /squelch /bind GZM_Loot        Shift+F7 /gzmtoggle LootOn
-    /squelch /bind GZM_Items       Shift+F8 /gzmtoggle ItemClicksOn
+    |- Shift+Ctrl for more toggles
+    /squelch /bind GZM_Melee       Ctrl+Shift+Q /gzmtoggle MeleeOn
+    /squelch /bind GZM_Assist      Ctrl+Shift+W /gzmtoggle AssistOn
+    /squelch /bind GZM_Charm       Ctrl+Shift+R /gzmtoggle CharmOn
+    /squelch /bind GZM_Items       Ctrl+Shift+I /gzmtoggle ItemClicksOn
 
-    |- Ctrl+Key for value adjustments
-    /squelch /bind GZM_HealUp      Ctrl+F3 /gzmadjust HealPct 5
-    /squelch /bind GZM_HealDown    Ctrl+Shift+F3 /gzmadjust HealPct -5
-    /squelch /bind GZM_AssistUp    Ctrl+F4 /gzmadjust AssistAt 5
-    /squelch /bind GZM_AssistDown  Ctrl+Shift+F4 /gzmadjust AssistAt -5
+    |- Shift+Alt for value adjustments
+    /squelch /bind GZM_HealUp      Alt+Shift+Q /gzmadjust HealPct 5
+    /squelch /bind GZM_HealDown    Ctrl+Alt+Q /gzmadjust HealPct -5
+    /squelch /bind GZM_AssistUp    Alt+Shift+W /gzmadjust AssistAt 5
+    /squelch /bind GZM_AssistDown  Ctrl+Alt+W /gzmadjust AssistAt -5
 
-    |- Alt+Key for group commands (DanNet)
-    /squelch /bind GZM_GrpPause    Alt+F1 /dgge /varset Paused 1
-    /squelch /bind GZM_GrpResume   Alt+Shift+F1 /dgge /varset Paused 0
-    /squelch /bind GZM_GrpBurn     Alt+F2 /dgge /burn
-    /squelch /bind GZM_GrpBackOff  Alt+F10 /dgge /backoff
+    |- Alt+Backtick for group commands (DanNet)
+    /squelch /bind GZM_GrpPause    Alt+` /dgge /varset Paused 1
+    /squelch /bind GZM_GrpResume   Alt+Shift+` /dgge /varset Paused 0
+    /squelch /bind GZM_GrpBurn     Alt+~ /dgge /burn
+    /squelch /bind GZM_GrpBackOff  Ctrl+Alt+` /dgge /backoff
 
-    /echo \ag[GZM-Keys] Hotkeys ready - F1=Pause F2=Burn F10=BackOff
+    /echo \ag[GZM-Keys] Hotkeys ready - `=Pause ~=Burn Ctrl+`=BackOff
 /return
 
 |- Remove all GZM hotkey bindings
@@ -194,22 +199,20 @@ Sub ShowHotkeyHelp
     /echo \ag================================
     /echo \ag  GZM Hotkey Reference
     /echo \ag================================
-    /echo \aw F1  = Pause/Resume
-    /echo \aw F2  = Burn
-    /echo \aw F3  = Toggle Heals
-    /echo \aw F4  = Toggle DPS
-    /echo \aw F5  = Toggle Mez
-    /echo \aw F6  = Toggle Pull
-    /echo \aw F7  = Toggle Buffs
-    /echo \aw F8  = Toggle Pet
-    /echo \aw F9  = Make Camp
-    /echo \aw F10 = Back Off
-    /echo \aw F11 = Chase MA
-    /echo \aw F12 = Stay Here
+    /echo \aw `      = Pause/Resume
+    /echo \aw ~      = Burn!
+    /echo \aw Ctrl+` = Back Off
     /echo \ag--------------------------------
-    /echo \aw Shift+F3-F8 = More Toggles
-    /echo \aw Ctrl+F3/F4  = Adjust Values
-    /echo \aw Alt+F1/F2   = Group Commands
+    /echo \aw Ctrl+Q = Heals    Ctrl+U = Pet
+    /echo \aw Ctrl+W = DPS      Ctrl+I = Loot
+    /echo \aw Ctrl+E = Buffs    Ctrl+Y = Pull
+    /echo \aw Ctrl+R = Mez      Ctrl+T = Slow
+    /echo \ag--------------------------------
+    /echo \aw Alt+Q  = Make Camp
+    /echo \aw Alt+W  = Chase MA
+    /echo \aw Alt+E  = Stay Here
+    /echo \ag--------------------------------
+    /echo \aw Alt+`  = Group Pause (DanNet)
     /echo \ag================================
 /return
 
